@@ -543,6 +543,11 @@
             <summary>Focus terminal on the left.</summary>
             <description>Focus terminal on the left.</description>
         </key>
+        <key name="focus-terminal-cycle" type="s">
+            <default>''</default>
+            <summary>Cycle focus around the current tab.</summary>
+            <description>Cycle focus around the current tab.</description>
+        </key>
         <key name="move-terminal-split-up" type="s">
             <default>''</default>
             <summary>Move the terminal split handle up.</summary>

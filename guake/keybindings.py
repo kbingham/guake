@@ -63,9 +63,9 @@ class Keybindings():
             'switch-tab5', 'switch-tab6', 'switch-tab7', 'switch-tab8', 'switch-tab9',
             'switch-tab10', 'switch-tab-last', 'reset-terminal', 'split-tab-vertical',
             'split-tab-horizontal', 'close-terminal', 'focus-terminal-up', 'focus-terminal-down',
-            'focus-terminal-right', 'focus-terminal-left', 'move-terminal-split-up',
-            'move-terminal-split-down', 'move-terminal-split-left', 'move-terminal-split-right',
-            'search-terminal'
+            'focus-terminal-right', 'focus-terminal-left', 'focus-terminal-cycle',
+            'move-terminal-split-up', 'move-terminal-split-down', 'move-terminal-split-left',
+            'move-terminal-split-right', 'search-terminal'
         ]
         for key in keys:
             guake.settings.keybindingsLocal.onChangedValue(key, self.reload_accelerators)
@@ -319,6 +319,14 @@ class Keybindings():
                 key, mask, Gtk.AccelFlags.VISIBLE, (
                     lambda *args: FocusMover(self.guake.window).
                     move_left(self.guake.get_notebook().get_current_terminal()) or True
+                )
+            )
+        key, mask = Gtk.accelerator_parse(getk('focus-terminal-cycle'))
+        if key > 0:
+            self.accel_group.connect(
+                key, mask, Gtk.AccelFlags.VISIBLE, (
+                    lambda *args: FocusMover(self.guake.window).
+                    cycle(self.guake.get_notebook().get_current_terminal()) or True
                 )
             )
         key, mask = Gtk.accelerator_parse(getk('move-terminal-split-up'))

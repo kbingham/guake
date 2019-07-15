@@ -168,6 +168,10 @@ HOTKEYS = [
                 'label': _('Focus terminal on the right')
             },
             {
+                'key': 'focus-terminal-cycle',
+                'label': _('Cycle focus around the current tab')
+            },
+            {
                 'key': 'move-terminal-split-up',
                 'label': _('Move the terminal split handle up')
             },

@@ -88,6 +88,11 @@ class FocusMover():
             if sx <= search_x <= sx + sw and sy <= search_y <= sy + sh:
                 term.grab_focus()
 
+    def cycle(self, terminal):
+        for term in terminal.get_parent().get_root_box().iter_terminals():
+            print("Cycling terminal in tab")
+            yield term.grab_focus()
+
     def list_allocation(self, terminal):
         terminal_rect = terminal.get_parent().get_allocation()
         x, y = terminal.get_parent().translate_coordinates(self.window, 0, 0)
